@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build:docx": "node generate.js",
+    "build:cover": "node generate-cover.js",
+    "build:epub": "node generate-epub.js",
+    "build": "npm run build:docx && npm run build:cover && npm run build:epub"
+  },
+  "dependencies": {
+    "docx": "^9.7.1",
+    "jszip": "^3.10.1",
+    "sharp": "^0.35.3"
+  }
+}

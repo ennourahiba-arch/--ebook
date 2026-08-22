@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NazdanaNoorzai presents The Woman Who Held On to Hope, a memoir by Nazdana Noorzai." />
+    <meta property="og:title" content="NazdanaNoorzai" />
+    <meta property="og:description" content="The Woman Who Held On to Hope, a memoir by Nazdana Noorzai." />
+    <meta property="og:image" content="front.png" />
+    <title>NazdanaNoorzai</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="preload" href="front.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="NazdanaNoorzai home">
+        <img src="logo.png" alt="" />
+        <span class="wordmark">NazdanaNoorzai</span>
+      </a>
+      <a class="header-link" href="#read">Read the book</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="book-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A memoir by Nazdana Noorzai</p>
+          <h1 id="book-title">The Woman Who Held On to Hope</h1>
+          <p class="hero-intro">A tender portrait of a mother whose courage, love, and enduring hope carried her family through life's hardest seasons.</p>
+          <div class="actions">
+            <a class="button button-primary" href="the_woman_who_held_on_to_hope.epub" download>Download EPUB</a>
+            <a class="button button-secondary" href="#preview">Read an excerpt</a>
+          </div>
+          <p class="format-note">For Apple Books, Kindle, Kobo, and other ebook readers.</p>
+        </div>
+        <figure class="cover-frame">
+          <img src="front.png" alt="Cover of The Woman Who Held On to Hope by Nazdana Noorzai" />
+        </figure>
+      </section>
+
+      <section class="about" aria-labelledby="about-heading">
+        <div class="section-marker" aria-hidden="true">I</div>
+        <div>
+          <p class="eyebrow">The book</p>
+          <h2 id="about-heading">A story of the strength that remains</h2>
+        </div>
+        <p class="about-copy">Some lives hold stories that deserve to be heard. This memoir honors a woman who met hardship with patience, held grief close without surrendering her kindness, and made hope a light for the people she loved.</p>
+      </section>
+
+      <section class="preview" id="preview" aria-labelledby="preview-heading">
+        <div class="preview-heading">
+          <p class="eyebrow">From the introduction</p>
+          <h2 id="preview-heading">A small light in difficult days</h2>
+        </div>
+        <blockquote>
+          <p>“But somewhere in this world, among the mountains and plains of Afghanistan, a girl lived whose destiny was filled with events that no child should ever have to experience.”</p>
+          <footer>— <cite>The Woman Who Held On to Hope</cite></footer>
+        </blockquote>
+      </section>
+
+      <section class="read" id="read" aria-labelledby="read-heading">
+        <div>
+          <p class="eyebrow">Take it with you</p>
+          <h2 id="read-heading">Begin reading today</h2>
+          <p>The complete book is available as an EPUB, a format designed for comfortable reading on phones, tablets, and ereaders.</p>
+        </div>
+        <a class="button button-primary" href="the_woman_who_held_on_to_hope.epub" download>Download the EPUB</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>NazdanaNoorzai</p>
+      <p>© <span id="year"></span> Nazdana Noorzai</p>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
