@@ -36,8 +36,21 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 
 async function buildCover() {
   if (fs.existsSync('front.png')) {
-    await sharp('front.png').jpeg({ quality: 92, chromaSubsampling: '4:4:4' }).toFile('the_woman_who_held_on_to_hope_cover.jpg');
-    console.log('written the_woman_who_held_on_to_hope_cover.jpg from front.png');
+    const authorOverlay = Buffer.from(`<?xml version="1.0" encoding="UTF-8"?>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1536" viewBox="0 0 1024 1536">
+        <defs>
+          <linearGradient id="author-fade" x1="0" y1="1300" x2="0" y2="1400" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#12110e" stop-opacity="0"/>
+            <stop offset="0.72" stop-color="#12110e" stop-opacity="0.84"/>
+            <stop offset="1" stop-color="#12110e"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="1300" width="1024" height="236" fill="url(#author-fade)"/>
+        <text x="512" y="1463" text-anchor="middle" fill="#d7a849" font-family="Georgia, serif" font-size="42" letter-spacing="8">NORA NOOR</text>
+      </svg>`);
+    await sharp('front.png').composite([{ input: authorOverlay, top: 0, left: 0 }]).png().toFile('front-nora.png');
+    await sharp('front-nora.png').jpeg({ quality: 92, chromaSubsampling: '4:4:4' }).toFile('the_woman_who_held_on_to_hope_cover.jpg');
+    console.log('written front-nora.png and the_woman_who_held_on_to_hope_cover.jpg');
     return;
   }
   fs.writeFileSync('the_woman_who_held_on_to_hope_cover.svg', svg);
