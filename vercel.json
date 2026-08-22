@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/the_woman_who_held_on_to_hope.epub",
