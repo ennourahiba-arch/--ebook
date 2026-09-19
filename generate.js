@@ -15,7 +15,7 @@ const numberWords = { One:1, Two:2, Three:3, Four:4, Five:5, Six:6, Seven:7, Eig
   Nineteen:19, Twenty:20, 'Twenty-One':21, 'Twenty-Two':22, 'Twenty-Three':23, 'Twenty-Four':24,
   'Twenty-Five':25, 'Twenty-Six':26, 'Twenty-Seven':27, 'Twenty-Eight':28, 'Twenty-Nine':29, Thirty:30 };
 
-// ---------- helpers ----------
+
 function ornament(sizeOverride) {
   return new Paragraph({
     alignment: AlignmentType.CENTER,
@@ -36,7 +36,7 @@ function sceneBreak() {
 function bodyParagraph(text, opts = {}) {
   const { firstOfChapter = false } = opts;
   if (firstOfChapter) {
-    // split first ~4 words into small caps for an elegant chapter opening
+
     const words = text.split(' ');
     const leadCount = Math.min(4, words.length);
     const lead = words.slice(0, leadCount).join(' ');
@@ -68,7 +68,7 @@ function buildBody(bodyArr) {
   for (const p of bodyArr) {
     if (p === '***SCENEBREAK***') {
       out.push(sceneBreak());
-      first = true; // next paragraph after a scene break gets the elegant treatment again
+      first = true; 
       continue;
     }
     out.push(bodyParagraph(p, { firstOfChapter: first }));
@@ -98,10 +98,10 @@ function chapterTitle(title) {
   });
 }
 
-// ---------- document assembly ----------
+
 const children = [];
 
-// ===== Title page =====
+
 children.push(
   new Paragraph({ spacing: { before: 2400 }, children: [] }),
   ornament(40),
@@ -129,7 +129,7 @@ children.push(
   new Paragraph({ children: [ new PageBreak() ] }),
 );
 
-// ===== Front matter (Dedication, Foreword, Introduction, Acknowledgment) =====
+
 for (const section of data.front_matter) {
   const isDedication = section.heading === 'Dedication';
   children.push(
@@ -157,7 +157,7 @@ for (const section of data.front_matter) {
   children.push(new Paragraph({ children: [ new PageBreak() ] }));
 }
 
-// ===== Table of contents (manually authored so it always displays, in any viewer) =====
+
 children.push(
   new Paragraph({
     heading: HeadingLevel.HEADING_1,
@@ -186,7 +186,6 @@ for (const ch of data.chapters) {
 }
 children.push(new Paragraph({ children: [ new PageBreak() ] }));
 
-// ===== Chapters =====
 for (const ch of data.chapters) {
   children.push(
     new Paragraph({ spacing: { before: 900 }, children: [] }),
@@ -198,7 +197,7 @@ for (const ch of data.chapters) {
   children.push(new Paragraph({ children: [ new PageBreak() ] }));
 }
 
-// ===== Back matter (Acknowledgment, etc.) =====
+
 for (const section of (data.back_matter || [])) {
   children.push(
     ornament(26),
@@ -214,9 +213,8 @@ for (const section of (data.back_matter || [])) {
   children.push(...buildBody(section.body));
   children.push(new Paragraph({ children: [ new PageBreak() ] }));
 }
-children.pop(); // remove trailing page break after the very last section
+children.pop(); 
 
-// ---------- header / footer ----------
 const header = new Header({
   children: [
     new Paragraph({
@@ -251,7 +249,7 @@ const doc = new Document({
     {
       properties: {
         page: {
-          size: { width: 8640, height: 12960 }, // 6in x 9in trim size (common book format), in twips
+          size: { width: 8640, height: 12960 }, 
           margin: { top: 1080, bottom: 1080, left: 1080, right: 1080 },
         },
         titlePage: true,
